@@ -1,7 +1,19 @@
+def blast_import(file_path):
+    '''
+    imports individual blast text file and adds column names
+    file_path - path to text file
+    '''
+    dataframe = pd.read_table(file_path, sep = "\t", header = None)
+    blast_colnames = ["query seqid", "subject seqid", "identity match %", "length", "mismatches", "gap open",
+                  "qstart", "qend", "alignment start", "alignment end",
+                  "evalue", "bitscore"]
+    dataframe.columns = blast_colnames
+    return(dataframe)
+
 def blast_columns(dataframe):
     '''
     adds blast column names to blast dataframe from text file
-    must import dataframe first from text
+    must import dataframe first from text - more limited than blast_import
     '''
     if isinstance(dataframe,pd.DataFrame) == True:
         blast_colnames = ["query seqid", "subject seqid", "identity match %", "length", "mismatches", "gap open",
