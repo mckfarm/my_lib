@@ -8,8 +8,8 @@ def blast_import(file_path, delim):
         delim - type of delimiter e.g. "\t", ","
     '''
     dataframe = pd.read_table(file_path, sep = delim, header = None)
-    blast_colnames = ["query seqid", "subject seqid", "identity match %", "length", "mismatches", "gap open",
-                  "qstart", "qend", "alignment start", "alignment end",
+    blast_colnames = ["query_seqid", "subject_seqid", "identity_match", "length", "mismatches", "gap_open",
+                  "qstart", "qend", "alignment_start", "alignment_end",
                   "evalue", "bitscore"]
     dataframe.columns = blast_colnames
     return(dataframe)
