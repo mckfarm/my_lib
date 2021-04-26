@@ -55,9 +55,9 @@ def blast_columns(dataframe):
     must import dataframe first from text - more limited than blast_import
     '''
     if isinstance(dataframe,pd.DataFrame) == True:
-        blast_colnames = ["query seqid", "subject seqid", "identity match %", "length", "mismatches", "gap open",
-                      "qstart", "qend", "alignment start", "alignment end",
-                      "evalue", "bitscore"]
+        blast_colnames = ["query_seqid", "subject_seqid", "identity_match", "length", "mismatches", "gap_open",
+                  "qstart", "qend", "alignment_start", "alignment_end",
+                  "evalue", "bitscore"]
         dataframe.columns = blast_colnames
         return(dataframe.head())
     else:
