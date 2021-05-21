@@ -7,6 +7,8 @@ def blast_import(file_path, delim):
         file_path - path to text file
         delim - type of delimiter e.g. "\t", ","
     '''
+    import pandas as pd
+
     dataframe = pd.read_table(file_path, sep = delim, header = None)
     blast_colnames = ["query_seqid", "subject_seqid", "identity_match", "length", "mismatches", "gap_open",
                   "qstart", "qend", "alignment_start", "alignment_end",
@@ -21,12 +23,11 @@ def blast_concat(file_end, out_name):
     assumes files are in the same folder as the script
 
     inputs:
-        folder - folder where the blast files are
         file_end - common file ending to search for such as "*_blast_cphA.txt"
             ideally file names should a similar structure to this: seqname_searchtype_genequery.txt
         out_name - output name, will save to current working directory unless another is specified
     example:
-        blast_concat("/","*_blast_cphA.txt","all_blast.csv")
+        blast_concat("*_blast_cphA.txt","all_blast.csv")
 
     '''
     import glob
@@ -54,6 +55,8 @@ def blast_columns(dataframe):
     adds blast info column names to blast dataframe from text file
     must import dataframe first from text - more limited than blast_import
     '''
+    import pandas as pd
+
     if isinstance(dataframe,pd.DataFrame) == True:
         blast_colnames = ["query_seqid", "subject_seqid", "identity_match", "length", "mismatches", "gap_open",
                   "qstart", "qend", "alignment_start", "alignment_end",
